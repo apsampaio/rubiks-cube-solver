@@ -1,7 +1,7 @@
 import { windowManager } from "node-window-manager";
 import { AppError } from "../errors/AppError";
 
-class Monitor {
+class Window {
   public readonly monitorWidth: number;
   public readonly monitorHeight: number;
 
@@ -44,4 +44,4 @@ class Monitor {
   }
 }
 
-export { Monitor };
+export { Window };

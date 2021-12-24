@@ -1,5 +1,5 @@
 import * as robot from "robotjs";
-import { Monitor } from "./entities/Monitor";
+import { Window } from "./entities/Window";
 import { AppError } from "./errors/AppError";
 
 const width = 500;
@@ -14,8 +14,8 @@ const startGame = () => {
 
 (() => {
   try {
-    const monitor = new Monitor();
-    monitor.showGameWindow();
+    const window = new Window();
+    window.showGameWindow();
     startGame();
   } catch (error) {
     if (error instanceof AppError) console.log(error.message);
