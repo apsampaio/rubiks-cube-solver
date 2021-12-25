@@ -5,18 +5,18 @@ class Window {
   public readonly monitorWidth: number;
   public readonly monitorHeight: number;
 
-  public readonly gameWidth: number;
-  public readonly gameHeight: number;
+  public readonly windowWidth: number;
+  public readonly windowHeight: number;
 
-  constructor(gameWidth = 500, gameHeight = 900) {
+  constructor(windowWidth = 500, windowHeight = 900) {
     const window = windowManager.getPrimaryMonitor();
     const { height, width } = window.getBounds();
 
     this.monitorWidth = width!;
     this.monitorHeight = height!;
 
-    this.gameWidth = gameWidth;
-    this.gameHeight = gameHeight;
+    this.windowWidth = windowWidth;
+    this.windowHeight = windowHeight;
   }
 
   public showGameWindow() {
@@ -33,8 +33,8 @@ class Window {
     }
 
     gameWindow.setBounds({
-      height: this.gameHeight,
-      width: this.gameWidth,
+      height: this.windowHeight,
+      width: this.windowWidth,
       x: 0,
       y: 0,
     });
