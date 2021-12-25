@@ -7,12 +7,12 @@ type Coordinate = {
 
 // 10 Hue Range
 enum Colors {
-  R, // Red 1 - 10
-  O, // Orange 30 - 40
-  Y, // Yellow 50 - 60
-  G, // Green 85 - 95
-  B, // Blue 190 - 200
-  W, // White 295 - 305
+  R = 0, // Red 1 - 10
+  O = 1, // Orange 30 - 40
+  Y = 2, // Yellow 50 - 60
+  G = 3, // Green 85 - 95
+  B = 4, // Blue 190 - 200
+  W = 5, // White 295 - 305
 }
 
 type Points = {
@@ -87,4 +87,4 @@ class Cube {
   }
 }
 
-export { Cube, Colors };
+export { Cube, Colors, Faces };

@@ -1,4 +1,4 @@
-import { Cube, Colors } from "./Cube";
+import { Cube, Colors, Faces } from "./Cube";
 import { Robot } from "./Robot";
 import { Window } from "./Window";
 
@@ -65,16 +65,6 @@ class Controller {
     L: async () => {
       const xOffset = 150;
       const yOffset = 35;
-      this.robot.moveCursorTo(this.cube.middle.x - xOffset, this.cube.middle.y);
-      this.robot.dragCursorTo(
-        this.cube.middle.x - xOffset,
-        this.cube.middle.y - yOffset
-      );
-      await this.sleep(this.delay);
-    },
-    Li: async () => {
-      const xOffset = 150;
-      const yOffset = 35;
       this.robot.moveCursorTo(
         this.cube.middle.x - xOffset,
         this.cube.middle.y - yOffset
@@ -82,8 +72,18 @@ class Controller {
       this.robot.dragCursorTo(this.cube.middle.x - xOffset, this.cube.middle.y);
       await this.sleep(this.delay);
     },
+    Li: async () => {
+      const xOffset = 150;
+      const yOffset = 35;
+      this.robot.moveCursorTo(this.cube.middle.x - xOffset, this.cube.middle.y);
+      this.robot.dragCursorTo(
+        this.cube.middle.x - xOffset,
+        this.cube.middle.y - yOffset
+      );
+      await this.sleep(this.delay);
+    },
     F: async () => {
-      const xOffset = 35;
+      const xOffset = 50;
       const yOffset = 35;
       this.robot.moveCursorTo(
         this.cube.middle.x + xOffset,
@@ -93,7 +93,7 @@ class Controller {
       await this.sleep(this.delay);
     },
     Fi: async () => {
-      const xOffset = 35;
+      const xOffset = 50;
       const yOffset = 35;
       this.robot.moveCursorTo(this.cube.middle.x + xOffset, this.cube.middle.y);
       this.robot.dragCursorTo(
@@ -103,7 +103,7 @@ class Controller {
       await this.sleep(this.delay);
     },
     B: async () => {
-      const xOffset = 170;
+      const xOffset = 185;
       const yOffset = 35;
       this.robot.moveCursorTo(this.cube.middle.x + xOffset, this.cube.middle.y);
       this.robot.dragCursorTo(
@@ -113,7 +113,7 @@ class Controller {
       await this.sleep(this.delay);
     },
     Bi: async () => {
-      const xOffset = 170;
+      const xOffset = 185;
       const yOffset = 35;
       this.robot.moveCursorTo(
         this.cube.middle.x + xOffset,
@@ -124,7 +124,7 @@ class Controller {
     },
     RotateLeft: async () => {
       const yOffset = 250;
-      const xOffset = 70;
+      const xOffset = 35;
       this.robot.moveCursorTo(
         this.cube.middle.x + xOffset,
         this.cube.middle.y + yOffset
@@ -134,7 +134,7 @@ class Controller {
     },
     RotateRight: async () => {
       const yOffset = 250;
-      const xOffset = 70;
+      const xOffset = 35;
       this.robot.moveCursorTo(
         this.cube.middle.x - xOffset,
         this.cube.middle.y + yOffset
@@ -220,7 +220,7 @@ class Controller {
     return grid;
   }
 
-  public async getCubeColors() {
+  public async getCubeColors(): Promise<Faces> {
     // FRONT
     this.cube.setFace("F", this.readFrontFace());
     // RIGHT
@@ -234,9 +234,15 @@ class Controller {
     this.cube.setFace("L", this.readFrontFace());
     await this.moves.RotateLeft();
     // UP
-    // await this.moves.Rot();
-    // this.cube.setFace("L", this.readFrontFace());
-    // await this.moves.RotateLeft();
+    await this.moves.RotateDown();
+    this.cube.setFace("U", this.readFrontFace());
+    await this.moves.RotateUp();
+    // DOWN
+    await this.moves.RotateUp();
+    this.cube.setFace("D", this.readFrontFace());
+    await this.moves.RotateDown();
+
+    return this.cube.faces;
   }
 }
 

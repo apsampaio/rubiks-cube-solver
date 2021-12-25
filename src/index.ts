@@ -14,12 +14,15 @@ import { AppError } from "./errors/AppError";
 
     window.showGameWindow();
     await controller.sleep(1000);
-    robot.startGame();
+    // robot.startGame();
+
     // await controller.sleep(6000);
 
-    await controller.moves.RotateDown();
-    await controller.moves.RotateDown();
-    await controller.moves.RotateDown();
+    // const faces = await controller.getCubeColors();
+    // console.log(faces);
+
+    await controller.moves.D();
+    await controller.moves.D();
   } catch (error) {
     if (error instanceof AppError) console.log(error.message);
     else console.log(error);
