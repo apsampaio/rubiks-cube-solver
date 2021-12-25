@@ -30,7 +30,7 @@ class Robot {
 
   public dragCursorTo(x: number, y: number) {
     robot.mouseToggle("down", "left");
-    robot.moveMouseSmooth(x, y, 5);
+    robot.moveMouseSmooth(x, y, 2);
     robot.mouseToggle("up", "left");
   }
 }
