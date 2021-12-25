@@ -5,6 +5,16 @@ type Coordinate = {
   y: number;
 };
 
+// 10 Hue Range
+enum Colors {
+  Red, //  1 - 10
+  Orange, //  30 - 40
+  Yellow, //  50 - 60
+  Green, //   85 - 95
+  Blue, //  190 - 200
+  White, //  295 - 305
+}
+
 class Cube {
   public readonly gameWidth: number;
   public readonly gameHeight: number;
@@ -29,4 +39,4 @@ class Cube {
   }
 }
 
-export { Cube };
+export { Cube, Colors };

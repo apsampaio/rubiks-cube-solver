@@ -1,5 +1,5 @@
 import * as robot from "robotjs";
-
+import { hexToHueToColor } from "../utils/hexToHueToColor";
 import { AppError } from "../errors/AppError";
 
 class Robot {
@@ -32,6 +32,13 @@ class Robot {
     robot.mouseToggle("down", "left");
     robot.moveMouseSmooth(x, y, 2);
     robot.mouseToggle("up", "left");
+  }
+
+  public getColors() {
+    const point = robot.getMousePos();
+    const hex = robot.getPixelColor(point.x, point.y);
+    console.log(hex);
+    console.log(hexToHueToColor(hex));
   }
 }
 

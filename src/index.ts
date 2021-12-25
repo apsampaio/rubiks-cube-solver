@@ -17,11 +17,7 @@ import { AppError } from "./errors/AppError";
     robot.startGame();
     // await controller.sleep(6000);
 
-    await controller.sleep(1000);
-
-    await controller.moves.B();
-    await controller.moves.B();
-    await controller.moves.B();
+    setInterval(robot.getColors, 1000);
   } catch (error) {
     if (error instanceof AppError) console.log(error.message);
     else console.log(error);
