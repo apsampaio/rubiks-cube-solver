@@ -38,6 +38,10 @@ class Robot {
     const hex = robot.getPixelColor(x, y);
     return hexToHueToColor(hex);
   }
+
+  public getPixel() {
+    console.log(robot.getMousePos());
+  }
 }
 
 export { Robot };

@@ -17,7 +17,9 @@ import { AppError } from "./errors/AppError";
     robot.startGame();
     // await controller.sleep(6000);
 
-    console.log(controller.readFrontFace());
+    await controller.moves.RotateDown();
+    await controller.moves.RotateDown();
+    await controller.moves.RotateDown();
   } catch (error) {
     if (error instanceof AppError) console.log(error.message);
     else console.log(error);

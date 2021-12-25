@@ -142,6 +142,32 @@ class Controller {
       this.robot.dragCursorTo(this.cube.middle.x, this.cube.middle.y + yOffset);
       await this.sleep(this.delay);
     },
+    RotateUp: async () => {
+      const yOffset = 250;
+      const xOffset = 100;
+      this.robot.moveCursorTo(
+        this.cube.middle.x - xOffset,
+        this.cube.middle.y + yOffset
+      );
+      this.robot.dragCursorTo(
+        this.cube.middle.x - xOffset,
+        this.cube.middle.y + (yOffset - 30)
+      );
+      await this.sleep(this.delay);
+    },
+    RotateDown: async () => {
+      const yOffset = 250;
+      const xOffset = 100;
+      this.robot.moveCursorTo(
+        this.cube.middle.x - xOffset,
+        this.cube.middle.y + (yOffset - 30)
+      );
+      this.robot.dragCursorTo(
+        this.cube.middle.x - xOffset,
+        this.cube.middle.y + yOffset
+      );
+      await this.sleep(this.delay);
+    },
   };
 
   constructor(robot: Robot, cube: Cube, window: Window) {
@@ -157,7 +183,7 @@ class Controller {
   private make2DArray = (cols: number, rows: number) =>
     [...new Array(cols)].map(() => [...new Array(rows)].map(() => 0));
 
-  public readFrontFace(): Colors[][] {
+  private readFrontFace(): Colors[][] {
     const grid = this.make2DArray(3, 3);
     let point = 1;
 
@@ -175,7 +201,7 @@ class Controller {
     return grid;
   }
 
-  public readRightFace(): Colors[][] {
+  private readRightFace(): Colors[][] {
     const grid = this.make2DArray(3, 3);
 
     let point = 1;
@@ -192,6 +218,25 @@ class Controller {
     }
 
     return grid;
+  }
+
+  public async getCubeColors() {
+    // FRONT
+    this.cube.setFace("F", this.readFrontFace());
+    // RIGHT
+    this.cube.setFace("R", this.readRightFace());
+    // BACK
+    await this.moves.RotateLeft();
+    this.cube.setFace("B", this.readRightFace());
+    await this.moves.RotateRight();
+    // LEFT
+    await this.moves.RotateRight();
+    this.cube.setFace("L", this.readFrontFace());
+    await this.moves.RotateLeft();
+    // UP
+    // await this.moves.Rot();
+    // this.cube.setFace("L", this.readFrontFace());
+    // await this.moves.RotateLeft();
   }
 }
 

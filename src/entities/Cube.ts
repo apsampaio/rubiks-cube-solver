@@ -19,11 +19,26 @@ type Points = {
   [key: string]: Coordinate;
 };
 
+type Faces = {
+  [name: string]: Colors[][];
+};
+
+type FaceNames = "F" | "R" | "L" | "U" | "D" | "B";
+
 class Cube {
   public readonly gameWidth: number;
   public readonly gameHeight: number;
 
   public readonly middle: Coordinate;
+
+  public faces: Faces = {
+    F: [], // FRONT
+    R: [], // RIGHT
+    L: [], // LEFT
+    U: [], // UP
+    D: [], // DOWN
+    B: [], // BACK
+  };
 
   // FIXME base on cube center
   public readonly facePoints: Points = {
@@ -65,6 +80,10 @@ class Cube {
       x: gameWidth / 2,
       y: gameHeight / 2 + magicPaddingNumber,
     };
+  }
+
+  setFace(face: FaceNames, newFace: Colors[][]) {
+    this.faces[face] = newFace;
   }
 }
 
