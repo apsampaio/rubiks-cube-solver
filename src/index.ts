@@ -17,7 +17,7 @@ import { AppError } from "./errors/AppError";
     robot.startGame();
     // await controller.sleep(6000);
 
-    setInterval(robot.getColors, 1000);
+    console.log(controller.readFrontFace());
   } catch (error) {
     if (error instanceof AppError) console.log(error.message);
     else console.log(error);

@@ -1,4 +1,4 @@
-import { Cube } from "./Cube";
+import { Cube, Colors } from "./Cube";
 import { Robot } from "./Robot";
 import { Window } from "./Window";
 
@@ -152,6 +152,46 @@ class Controller {
 
   public sleep(time: number) {
     return new Promise((resolve) => setTimeout(resolve, time));
+  }
+
+  private make2DArray = (cols: number, rows: number) =>
+    [...new Array(cols)].map(() => [...new Array(rows)].map(() => 0));
+
+  public readFrontFace(): Colors[][] {
+    const grid = this.make2DArray(3, 3);
+    let point = 1;
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        const color = this.robot.getColorFromPixel(
+          this.cube.facePoints[point].x,
+          this.cube.facePoints[point].y
+        );
+        grid[i][j] = color;
+        point++;
+      }
+    }
+
+    return grid;
+  }
+
+  public readRightFace(): Colors[][] {
+    const grid = this.make2DArray(3, 3);
+
+    let point = 1;
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        const color = this.robot.getColorFromPixel(
+          this.cube.rightPoints[point].x,
+          this.cube.rightPoints[point].y
+        );
+        grid[i][j] = color;
+        point++;
+      }
+    }
+
+    return grid;
   }
 }
 

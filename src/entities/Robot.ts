@@ -34,10 +34,9 @@ class Robot {
     robot.mouseToggle("up", "left");
   }
 
-  public getColors() {
-    const point = robot.getMousePos();
-    const hex = robot.getPixelColor(point.x, point.y);
-    console.log(hexToHueToColor(hex));
+  public getColorFromPixel(x: number, y: number) {
+    const hex = robot.getPixelColor(x, y);
+    return hexToHueToColor(hex);
   }
 }
 

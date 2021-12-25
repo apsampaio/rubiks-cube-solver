@@ -33,15 +33,13 @@ const hexToHueToColor = (H: string) => {
 
   if (h < 0) h += 360;
 
-  console.log("h: " + h);
-
   // Get color enum
-  if (h >= 1 && h <= 10) return Colors.Red;
-  else if (h >= 30 && h <= 40) return Colors.Orange;
-  else if (h >= 50 && h <= 60) return Colors.Yellow;
-  else if (h >= 85 && h <= 95) return Colors.Green;
-  else if (h >= 190 && h <= 200) return Colors.Blue;
-  else if (h >= 295 && h <= 305) return Colors.White;
+  if (h >= 1 && h <= 10) return Colors.R;
+  else if (h >= 30 && h <= 40) return Colors.O;
+  else if (h >= 50 && h <= 60) return Colors.Y;
+  else if (h >= 85 && h <= 95) return Colors.G;
+  else if (h >= 190 && h <= 200) return Colors.B;
+  else if (h >= 295 && h <= 305) return Colors.W;
 
   throw new AppError("No color match");
 };

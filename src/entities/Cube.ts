@@ -7,12 +7,12 @@ type Coordinate = {
 
 // 10 Hue Range
 enum Colors {
-  Red, //  1 - 10
-  Orange, //  30 - 40
-  Yellow, //  50 - 60
-  Green, //   85 - 95
-  Blue, //  190 - 200
-  White, //  295 - 305
+  R, // Red 1 - 10
+  O, // Orange 30 - 40
+  Y, // Yellow 50 - 60
+  G, // Green 85 - 95
+  B, // Blue 190 - 200
+  W, // White 295 - 305
 }
 
 type Points = {
@@ -25,26 +25,29 @@ class Cube {
 
   public readonly middle: Coordinate;
 
-  public readonly points: Points = {
-    F1: { x: 90, y: 490 },
-    F2: { x: 160, y: 540 },
-    F3: { x: 230, y: 580 },
-    F4: { x: 90, y: 580 },
-    F5: { x: 160, y: 620 },
-    F6: { x: 230, y: 660 },
-    F7: { x: 90, y: 660 },
-    F8: { x: 160, y: 700 },
-    F9: { x: 230, y: 740 },
+  // FIXME base on cube center
+  public readonly facePoints: Points = {
+    1: { x: 90, y: 490 },
+    2: { x: 160, y: 540 },
+    3: { x: 230, y: 580 },
+    4: { x: 90, y: 580 },
+    5: { x: 160, y: 620 },
+    6: { x: 230, y: 660 },
+    7: { x: 90, y: 660 },
+    8: { x: 160, y: 700 },
+    9: { x: 230, y: 740 },
+  };
 
-    R1: { x: 290, y: 580 },
-    R2: { x: 360, y: 540 },
-    R3: { x: 430, y: 490 },
-    R4: { x: 290, y: 660 },
-    R5: { x: 360, y: 620 },
-    R6: { x: 430, y: 580 },
-    R7: { x: 290, y: 740 },
-    R8: { x: 360, y: 700 },
-    R9: { x: 430, y: 660 },
+  public readonly rightPoints: Points = {
+    1: { x: 290, y: 580 },
+    2: { x: 360, y: 540 },
+    3: { x: 430, y: 490 },
+    4: { x: 290, y: 660 },
+    5: { x: 360, y: 620 },
+    6: { x: 430, y: 580 },
+    7: { x: 290, y: 740 },
+    8: { x: 360, y: 700 },
+    9: { x: 430, y: 660 },
   };
 
   // FIXME Find out cube size
