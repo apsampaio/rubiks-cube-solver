@@ -7,8 +7,8 @@ enum Moves {
   Ri, // ↓
   L, // ↑
   Li, // ↓
-  B,
-  Bi,
+  B, // <-
+  Bi, // ->
   D, // ->
   Di, // <-
   F, // ->
@@ -117,6 +117,26 @@ class Controller {
         this.cube.middle.x + xOffset,
         this.cube.middle.y - yOffset
       );
+      await this.sleep(this.delay);
+    },
+    B: async () => {
+      const xOffset = 170;
+      const yOffset = 35;
+      this.robot.moveCursorTo(this.cube.middle.x + xOffset, this.cube.middle.y);
+      this.robot.dragCursorTo(
+        this.cube.middle.x + xOffset,
+        this.cube.middle.y - yOffset
+      );
+      await this.sleep(this.delay);
+    },
+    Bi: async () => {
+      const xOffset = 170;
+      const yOffset = 35;
+      this.robot.moveCursorTo(
+        this.cube.middle.x + xOffset,
+        this.cube.middle.y - yOffset
+      );
+      this.robot.dragCursorTo(this.cube.middle.x + xOffset, this.cube.middle.y);
       await this.sleep(this.delay);
     },
     RotateLeft: async () => {

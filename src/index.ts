@@ -19,9 +19,9 @@ import { AppError } from "./errors/AppError";
 
     await controller.sleep(1000);
 
-    await controller.moves.Fi();
-    await controller.moves.Fi();
-    await controller.moves.Fi();
+    await controller.moves.B();
+    await controller.moves.B();
+    await controller.moves.B();
   } catch (error) {
     if (error instanceof AppError) console.log(error.message);
     else console.log(error);
