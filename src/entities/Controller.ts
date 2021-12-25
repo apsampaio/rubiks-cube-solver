@@ -2,23 +2,6 @@ import { Cube } from "./Cube";
 import { Robot } from "./Robot";
 import { Window } from "./Window";
 
-enum Moves {
-  R, // ↑
-  Ri, // ↓
-  L, // ↑
-  Li, // ↓
-  B, // <-
-  Bi, // ->
-  D, // ->
-  Di, // <-
-  F, // ->
-  Fi, // <-
-  U, // <-
-  Ui, // ->
-  RotateRight, // ->
-  RotateLeft, // <-
-}
-
 class Controller {
   private readonly robot: Robot;
   private readonly cube: Cube;
@@ -172,4 +155,4 @@ class Controller {
   }
 }
 
-export { Controller, Moves };
+export { Controller };

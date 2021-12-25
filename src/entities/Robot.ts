@@ -37,7 +37,6 @@ class Robot {
   public getColors() {
     const point = robot.getMousePos();
     const hex = robot.getPixelColor(point.x, point.y);
-    console.log(hex);
     console.log(hexToHueToColor(hex));
   }
 }
