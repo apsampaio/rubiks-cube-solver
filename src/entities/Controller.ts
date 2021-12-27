@@ -183,7 +183,7 @@ class Controller {
   private make2DArray = (cols: number, rows: number) =>
     [...new Array(cols)].map(() => [...new Array(rows)].map(() => 0));
 
-  private readFrontFace(): Colors[][] {
+  public readFrontFace(): Colors[][] {
     const grid = this.make2DArray(3, 3);
     let point = 1;
 
