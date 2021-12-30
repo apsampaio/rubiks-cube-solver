@@ -15,6 +15,9 @@ class Controller {
       this.robot.moveCursorTo(this.cube.middle.x + xOffset, this.cube.middle.y);
       this.robot.dragCursorTo(this.cube.middle.x, this.cube.middle.y);
       await this.sleep(this.delay);
+
+      this.cube.clockwise("U");
+      this.cube.fixEdges("U", "CW");
     },
     Ui: async () => {
       const xOffset = 35;
@@ -91,6 +94,8 @@ class Controller {
       );
       this.robot.dragCursorTo(this.cube.middle.x + xOffset, this.cube.middle.y);
       await this.sleep(this.delay);
+
+      this.cube.clockwise("F");
     },
     Fi: async () => {
       const xOffset = 50;
@@ -183,41 +188,32 @@ class Controller {
   private make2DArray = (cols: number, rows: number) =>
     [...new Array(cols)].map(() => [...new Array(rows)].map(() => 0));
 
-  public readFrontFace(): Colors[][] {
-    const grid = this.make2DArray(3, 3);
-    let point = 1;
+  public readFrontFace(): Colors[] {
+    const face = [];
 
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        const color = this.robot.getColorFromPixel(
-          this.cube.facePoints[point].x,
-          this.cube.facePoints[point].y
-        );
-        grid[i][j] = color;
-        point++;
-      }
+    for (let point = 0; point < 9; point++) {
+      const color = this.robot.getColorFromPixel(
+        this.cube.facePoints[point].x,
+        this.cube.facePoints[point].y
+      );
+      face.push(color);
     }
 
-    return grid;
+    return face;
   }
 
-  private readRightFace(): Colors[][] {
-    const grid = this.make2DArray(3, 3);
+  private readRightFace(): Colors[] {
+    const face = [];
 
-    let point = 1;
-
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        const color = this.robot.getColorFromPixel(
-          this.cube.rightPoints[point].x,
-          this.cube.rightPoints[point].y
-        );
-        grid[i][j] = color;
-        point++;
-      }
+    for (let point = 0; point < 9; point++) {
+      const color = this.robot.getColorFromPixel(
+        this.cube.rightPoints[point].x,
+        this.cube.rightPoints[point].y
+      );
+      face.push(color);
     }
 
-    return grid;
+    return face;
   }
 
   public async getCubeColors(): Promise<Faces> {

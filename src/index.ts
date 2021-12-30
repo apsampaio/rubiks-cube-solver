@@ -11,28 +11,21 @@ import { AppError } from "./errors/AppError";
     const window = new Window();
     const robot = new Robot();
     const cube = new Cube();
-    const ui = new UI();
+
     const controller = new Controller(robot, cube, window);
 
     window.showGameWindow();
     await controller.sleep(1000);
     robot.startGame();
+    await controller.sleep(6000);
 
-    // const faces = await controller.getCubeColors();
+    const result = await controller.getCubeColors();
+    console.log(result);
 
-    // ui.draw(faces);
+    await controller.moves.U();
 
-    // await controller.sleep(6000);
-
-    // while (true) {
-    //   const keys = Object.keys(controller.moves);
-    //   const key = keys[
-    //     Math.floor(Math.random() * keys.length)
-    //   ] as keyof typeof controller.moves;
-
-    //   console.log(key);
-    //   await controller.moves[key]();
-    // }
+    const faces = await controller.getCubeColors();
+    console.log(faces);
   } catch (error) {
     if (error instanceof AppError) console.log(error.message);
     else console.log(error);
