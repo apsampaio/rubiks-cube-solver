@@ -35,48 +35,58 @@ class Box {
 
     const r = this._len / 2;
 
-    this.sketch.beginShape();
     // Z
+
+    this.sketch.beginShape();
     this.sketch.fill(this.colors[0]);
     this.sketch.vertex(-r, -r, -r);
     this.sketch.vertex(r, -r, -r);
     this.sketch.vertex(r, r, -r);
     this.sketch.vertex(-r, r, -r);
+    this.sketch.endShape();
 
+    this.sketch.beginShape();
     this.sketch.fill(this.colors[1]);
     this.sketch.vertex(-r, -r, r);
     this.sketch.vertex(r, -r, r);
     this.sketch.vertex(r, r, r);
     this.sketch.vertex(-r, r, r);
+    this.sketch.endShape();
 
     // Y
+
+    this.sketch.beginShape();
     this.sketch.fill(this.colors[2]);
     this.sketch.vertex(-r, -r, -r);
     this.sketch.vertex(r, -r, -r);
     this.sketch.vertex(r, -r, r);
     this.sketch.vertex(-r, -r, r);
+    this.sketch.endShape();
 
+    this.sketch.beginShape();
     this.sketch.fill(this.colors[3]);
     this.sketch.vertex(-r, r, -r);
     this.sketch.vertex(r, r, -r);
     this.sketch.vertex(r, r, r);
     this.sketch.vertex(-r, r, r);
-
-    // // X
-    this.sketch.fill(this.colors[4]);
-    this.sketch.vertex(-r, -r, r);
-    this.sketch.vertex(-r, -r, r);
-    this.sketch.vertex(-r, r, r);
-    this.sketch.vertex(-r, r, r);
-
-    this.sketch.fill(this.colors[5]);
-    this.sketch.vertex(r, -r, r);
-    this.sketch.vertex(r, -r, r);
-    this.sketch.vertex(r, r, r);
-    this.sketch.vertex(r, r, r);
-
     this.sketch.endShape();
 
+    // X
+    this.sketch.beginShape();
+    this.sketch.fill(this.colors[4]);
+    this.sketch.vertex(-r, -r, -r);
+    this.sketch.vertex(-r, r, -r);
+    this.sketch.vertex(-r, r, r);
+    this.sketch.vertex(-r, -r, r);
+    this.sketch.endShape();
+
+    this.sketch.beginShape();
+    this.sketch.fill(this.colors[5]);
+    this.sketch.vertex(r, -r, -r);
+    this.sketch.vertex(r, r, -r);
+    this.sketch.vertex(r, r, r);
+    this.sketch.vertex(r, -r, r);
+    this.sketch.endShape();
     this.sketch.pop();
   }
 }
